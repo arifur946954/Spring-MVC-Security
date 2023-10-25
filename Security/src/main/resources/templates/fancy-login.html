@@ -25,6 +25,11 @@
                             <i class="text-danger">Invalid userID or password</i>
 
                         </div>
+
+                        <div th:if="${param.logout}">
+                            <i class="text-danger">Logout Successfully</i>
+
+                        </div>
                         <!-- Place for messages: error, alert etc ... -->
                         <div class="form-group">
                             <div class="col-xs-15">

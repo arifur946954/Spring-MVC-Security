@@ -35,7 +35,11 @@ public class DemoSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws  Exception{
         http.authorizeHttpRequests(configurer->
-                configurer.anyRequest().authenticated())
+                configurer
+                        .requestMatchers("/").hasAnyRole("EMPLOYEE")
+                        .requestMatchers("/leaders/**").hasAnyRole("MANAGER")
+                        .requestMatchers("/systems/**").hasAnyRole("ADMIN")
+                        .anyRequest().authenticated())
 
                 .formLogin(form->form
                         .loginPage("/showMyLoginPages")

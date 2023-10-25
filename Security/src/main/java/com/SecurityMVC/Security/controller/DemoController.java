@@ -9,4 +9,16 @@ public class DemoController {
     public String ShowHome(){
         return "/home";
     }
+
+    @GetMapping("/leaders")
+    public String ShowLeaders(){
+        return "/leader";
+    }
+
+    @GetMapping("/systems")
+    public String ShowAdmin(){
+        return "/admin";
+    }
 }
+
+
