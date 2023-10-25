@@ -41,7 +41,10 @@ public class DemoSecurityConfig {
                         .loginPage("/showMyLoginPages")
                         .loginProcessingUrl("/authenticationTheUser")
                         .permitAll()
+                )
+                .logout(logout->logout.permitAll()
                 );
+
         return http.build();
     }
 
