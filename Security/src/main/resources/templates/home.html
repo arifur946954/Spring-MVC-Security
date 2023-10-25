@@ -23,22 +23,25 @@
     User: <span sec:authentication="principal.username"></span>
     User: <span sec:authentication="principal.authorities"></span>
 </p>
+//only for manager
+<div sec:authorize="hasRole('MANAGER')">
+    <p>
+        <a th:href="@{leaders}">
+            Leaders Meating
+        </a>
+        (access only for manaager)
+    </p>
+</div>
 
-<p>
-    <a th:href="@{leaders}">
-        Leaders Meating
+<div sec:authorize="hasRole('ADMIN')">
+    <p>
+        <a th:href="@{systems}">
+            Admin Meating
 
-    </a>
-    (access only for manaager)
-</p>
-
-<p>
-    <a th:href="@{systems}">
-        Admin Meating
-
-    </a>
-    (access only for IT Management System)
-</p>
+        </a>
+        (access only for IT Management System)
+    </p>
+</div>
 
 
 <form action="" th:action="@{/logout}" method="POST">

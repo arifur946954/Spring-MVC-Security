@@ -10,6 +10,7 @@ public class DemoController {
         return "/home";
     }
 
+
     @GetMapping("/leaders")
     public String ShowLeaders(){
         return "/leader";
