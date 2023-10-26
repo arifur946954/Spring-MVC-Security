@@ -14,7 +14,14 @@ import javax.sql.DataSource;
 public class DemoSecurityConfig {
 @Bean
 public UserDetailsManager userDetailsManager(DataSource dataSource){
-    return new JdbcUserDetailsManager(dataSource);
+    //define a query artrinve user by uer name
+    JdbcUserDetailsManager jdbcUserDetailsManager=new JdbcUserDetailsManager(dataSource);
+    jdbcUserDetailsManager.setUsersByUsernameQuery(
+            "select user_id,pw, active from members where user_id=?");
+    //define a quety retrive roles/authorities by roles
+    jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
+            "select user_id,role from roles where user_id=?");
+    return jdbcUserDetailsManager;
 
 }
     @Bean
